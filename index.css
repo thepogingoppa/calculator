@@ -116,3 +116,7 @@ header h1 {
 .six {
   grid-row: 2/3;
 }
+
+.pressed {
+    background: black;
+}
