@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+body {
+  background-color: #454671;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  font-family: "League Spartan", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
+  color: white;
+  width: 25%;
+  background-color: #212248;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+main header {
+  display: flex;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.screen {
+  width: 100%;
+  height: 55%;
+  background-color: #0c0d1b;
+  border: 0;
+  color: white;
+  font-family: "League Spartan", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
+  font-size: 5rem;
+  text-align: right;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+}
+.button-container {
+  background-color: #0c0d1b;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding: 1.5rem;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 2rem;
+  box-shadow: 3px 3px #000000;
+}
+
+.reset {
+  background-color: #004f87;
+  color: white;
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+}
+
+.equals {
+  background-color: #c13333;
+  color: white;
+  grid-row: 5 / 6;
+  grid-column: 3 /5;
+}
+
+.del {
+  background-color: #004f87;
+  color: white;
+  grid-row: 1 /2;
+}
+.multiply {
+  grid-row: 4 / 5;
+}
+.subtract {
+  grid-row: 3/4;
+}
+.add {
+  grid-row: 2 /3;
+}
+.one,
+.two,
+.three {
+  grid-row: 3/4;
+}
+
+.decimal,
+.zero,
+.divide {
+  grid-row: 4 /5;
+}
+
+.seven,
+.eight,
+.nine {
+  grid-row: 1 / 2;
+}
+
+.four,
+.five,
+.six {
+  grid-row: 2/3;
+}
