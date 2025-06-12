@@ -117,6 +117,12 @@ header h1 {
   grid-row: 2/3;
 }
 
-.pressed {
-    background: black;
+.pressed-blue {
+  background-color: #002845;
+}
+.pressed-red {
+  background-color: #3c0b0b;
+}
+.pressed-white {
+  background-color: #2e2e2e;
 }
