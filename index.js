@@ -70,7 +70,7 @@ document.addEventListener("keydown", function (event) {
       currentClass = "subtract";
       break;
     case "*":
-      currentClass = "*";
+      currentClass = "multiply";
       break;
     case "/":
       currentClass = "divide";
@@ -81,11 +81,36 @@ document.addEventListener("keydown", function (event) {
     case "=":
       currentClass = "equals";
       break;
-    case "del":
-      currentKey = "del";
+    case "Backspace":
+    case "Delete":
+      currentClass = "del";
+      break;
     case "reset":
       currentClass = "reset";
       break;
   }
-  console.log(currentClass);
+  let activeButton = document.querySelector("." + currentClass);
+  switch (currentClass) {
+    case "equals":
+      activeButton.classList.add("pressed-red");
+      setTimeout(function () {
+        activeButton.classList.remove("pressed-red");
+      }, 100);
+      break;
+    case "del":
+    case "reset":
+      activeButton.classList.add("pressed-blue");
+      setTimeout(function () {
+        activeButton.classList.remove("pressed-blue");
+      }, 100);
+      break;
+    default:
+      activeButton.classList.add("pressed-white");
+      setTimeout(function () {
+        activeButton.classList.remove("pressed-white");
+      }, 100);
+  } 
 });
+
+// adding functionality to the buttons
+
