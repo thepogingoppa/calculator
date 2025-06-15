@@ -1,36 +1,20 @@
-let buttons = document.querySelectorAll(".button");
+// functions
+function eventListeners() {
+  const buttons = document.querySelectorAll(".button");
+  for (i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function () {
+      const currentClass = this.classList[1];
+      buttonAnimation(currentClass);
+    });
+  }
 
-// adding click event listeners to the buttons
-
-for (i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", function () {
-    let currentClass = this.classList[1];
-    let activeButton = document.querySelector("." + currentClass);
-    switch (currentClass) {
-      case "equals":
-        activeButton.classList.add("pressed-red");
-        setTimeout(function () {
-          activeButton.classList.remove("pressed-red");
-        }, 100);
-        break;
-      case "del":
-      case "reset":
-        activeButton.classList.add("pressed-blue");
-        setTimeout(function () {
-          activeButton.classList.remove("pressed-blue");
-        }, 100);
-        break;
-      default:
-        activeButton.classList.add("pressed-white");
-        setTimeout(function () {
-          activeButton.classList.remove("pressed-white");
-        }, 100);
-    }
+  document.addEventListener("keydown", function (event) {
+    const currentKey = event.key;
+    currentClass = classMapper(currentKey);
+    buttonAnimation(currentClass);
   });
 }
-
-document.addEventListener("keydown", function (event) {
-  let currentKey = event.key;
+function classMapper(currentKey) {
   let currentClass = "";
   switch (currentKey) {
     case "0":
@@ -89,7 +73,11 @@ document.addEventListener("keydown", function (event) {
       currentClass = "reset";
       break;
   }
-  let activeButton = document.querySelector("." + currentClass);
+  return currentClass;
+}
+
+function buttonAnimation(currentClass) {
+  const activeButton = document.querySelector("." + currentClass);
   switch (currentClass) {
     case "equals":
       activeButton.classList.add("pressed-red");
@@ -109,8 +97,13 @@ document.addEventListener("keydown", function (event) {
       setTimeout(function () {
         activeButton.classList.remove("pressed-white");
       }, 100);
-  } 
-});
+  }
+}
 
-// adding functionality to the buttons
+// main function
 
+function main() {
+  eventListeners();
+}
+
+main();
