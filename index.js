@@ -5,6 +5,44 @@ function eventListeners() {
     buttons[i].addEventListener("click", function () {
       const currentClass = this.classList[1];
       buttonAnimation(currentClass);
+
+      // test function
+      let display = document.querySelector(".screen");
+      let pressedValue = document.querySelector("." + currentClass).innerHTML;
+      display.value += pressedValue;
+      let expression = display.value;
+      let stringNums = [];
+      let stringNum = "";
+      let intNums = [];
+      let operation = [];
+
+      for (i = 0; i < expression.length; i++) {
+        if (isSymbol(expression[i])) {
+          operation.push(expression[i]);
+          stringNums.push(stringNum);
+          stringNum = "";
+        } else {
+          stringNum += expression[i];
+        }
+      }
+
+      for (i = 0; i < stringNums.length; i++) {
+        num = stringNums[i];
+        intNums[i] = parseInt(num);
+      }
+
+      let results = 0;
+      for (i = 0; i < operation.length; i++) {
+        if (operation.length == 1) {
+          results = intNums[i] + intNums[i + 1];
+        } else {
+          num1 = results;
+          num2 = intNums[i];
+          results = num1 + num2;
+        }
+      }
+
+      display.value = results;
     });
   }
 
@@ -13,6 +51,23 @@ function eventListeners() {
     currentClass = classMapper(currentKey);
     buttonAnimation(currentClass);
   });
+}
+
+function isSymbol(pressedValue) {
+  if (
+    pressedValue == "+" ||
+    pressedValue == "-" ||
+    pressedValue == "*" ||
+    pressedValue == "/" ||
+    pressedValue == "="
+  )
+    return true;
+  else {
+    return false;
+  }
+}
+function isNotEquals(symbol) {
+  if ((symbol = !"=")) return true;
 }
 function classMapper(currentKey) {
   let currentClass = "";
@@ -63,6 +118,7 @@ function classMapper(currentKey) {
       currentClass = "decimal";
       break;
     case "=":
+    case "Enter":
       currentClass = "equals";
       break;
     case "Backspace":
