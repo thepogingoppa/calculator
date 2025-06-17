@@ -5,8 +5,8 @@ function eventListeners() {
     buttons[i].addEventListener("click", function () {
       const currentClass = this.classList[1];
       buttonAnimation(currentClass);
-
-      // test function
+      // this will be a function that displays the expression in the screen and then
+      // displays the result in the said screen
       let display = document.querySelector(".screen");
       let pressedValue = document.querySelector("." + currentClass).innerHTML;
       display.value += pressedValue;
@@ -16,6 +16,8 @@ function eventListeners() {
       let intNums = [];
       let operation = [];
 
+      // loops through the mathematical expression and separates the
+      // digts from the math symbols
       for (i = 0; i < expression.length; i++) {
         if (isSymbol(expression[i])) {
           operation.push(expression[i]);
@@ -26,23 +28,64 @@ function eventListeners() {
         }
       }
 
+      // parses the digits array to integers
       for (i = 0; i < stringNums.length; i++) {
         num = stringNums[i];
         intNums[i] = parseInt(num);
       }
 
+      // evaluates the mathematical expression
       let results = 0;
       for (i = 0; i < operation.length; i++) {
-        if (operation.length == 1) {
-          results = intNums[i] + intNums[i + 1];
-        } else {
-          num1 = results;
-          num2 = intNums[i];
-          results = num1 + num2;
-        }
-      }
+        mathSymbol = operation[i];
+        switch (mathSymbol) {
+          case "+":
+            if (i == 0) {
+              results = intNums[i] + intNums[i + 1];
+            } else {
+              num1 = results;
+              console.log(results);
+              num2 = intNums[i + 1];
+              results = num1 + num2;
+            }
+            break;
+          case "-":
+            if (i == 0) {
+              results = intNums[i] - intNums[i + 1];
+            } else {
+              num1 = results;
+              console.log(results);
+              num2 = intNums[i + 1];
+              results = num1 - num2;
+            }
+            break;
 
-      display.value = results;
+          case "*":
+            if (i == 0) {
+              results = intNums[i] * intNums[i + 1];
+            } else {
+              num1 = results;
+              console.log(results);
+              num2 = intNums[i + 1];
+              results = num1 * num2;
+            }
+            break;
+
+          case "/":
+            if (i == 0) {
+              results = intNums[i] / intNums[i + 1];
+            } else {
+              num1 = results;
+              console.log(results);
+              num2 = intNums[i + 1];
+              results = num1 / num2;
+            }
+            break;
+          case "=":
+            break;
+        }
+        display.value = results;
+      }
     });
   }
 
