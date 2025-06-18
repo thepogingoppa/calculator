@@ -19,15 +19,15 @@ function eventListeners() {
       // loops through the mathematical expression and separates the
       // digts from the math symbols
       for (i = 0; i < expression.length; i++) {
-        if (isSymbol(expression[i])) {
-          operation.push(expression[i]);
+        let char = expression[i];
+        if (isSymbol(char)) {
+          operation.push(char);
           stringNums.push(stringNum);
           stringNum = "";
         } else {
-          stringNum += expression[i];
+          stringNum += char;
         }
       }
-
       // parses the digits array to integers
       for (i = 0; i < stringNums.length; i++) {
         num = stringNums[i];
